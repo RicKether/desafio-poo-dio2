@@ -1,4 +1,6 @@
+import br.com.desafio.dominio.Bootcamp;
 import br.com.desafio.dominio.Cursos;
+import br.com.desafio.dominio.Dev;
 import br.com.desafio.dominio.Mentorias;
 
 import java.time.LocalDate;
@@ -18,8 +20,8 @@ public class Main {
         curso2.setDescricao("descricao curso js");
         curso2.setCargaHoraria(4);
 
-        System.out.println(curso1);
-        System.out.println(curso2);
+        //System.out.println(curso1);
+        //System.out.println(curso2);
 
         Mentorias mentoria1 = new Mentorias();
 
@@ -33,12 +35,39 @@ public class Main {
         mentoria2.setDescricao("descricao mentoria js");
         mentoria2.setData(LocalDate.now());
 
-        System.out.println(mentoria1);
-        System.out.println(mentoria2);
+        //System.out.println(mentoria1);
+        //System.out.println(mentoria2);
 
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descricao Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria1);
+        bootcamp.getConteudos().add(mentoria2);
 
+        Dev dev1 = new Dev();
+        dev1.setNome("dev1");
+        dev1.inscrever(bootcamp);
 
+        System.out.println("Conteudos Inscritos Dev1: " + dev1.getConteudosInscritos());
+        dev1.progredir();
 
+        System.out.println("Conteudos Concluídos Dev1: " + dev1.getConteudosConcluidos());
+        System.out.println("XP de Dev1: " + dev1.calcularTotalXp());
+
+        System.out.println("..........");
+        System.out.println("..........");
+
+        Dev dev2 = new Dev();
+        dev2.setNome("dev2");
+        dev2.inscrever(bootcamp);
+
+        System.out.println("Conteudos Inscritos Dev2: " + dev2.getConteudosInscritos());
+
+        dev2.progredir();
+        System.out.println("Conteudos Concluídos Dev2: " + dev2.getConteudosConcluidos());
+        System.out.println("XP de Dev 2: " + dev2.calcularTotalXp());
     }
 
 }
